@@ -1,6 +1,6 @@
 # Homework 7. Домашняя работа на выходные, 2-3 марта.
 Создать ветку от существующего проекта gitHub: https://github.com/AndesTechConsulting3/JavaSE-Autotesting-Day17-Homework7.git 
-Имя ветки должно содержать строку rfb, например VasilyPetrov-rfb-branch-home7.
+Имя ветки должно содержать строку rfb, например, VasilyPetrov-rfb-branch-home7.
 
 Протестировать следующие действия на сайте
 http://andestech.org/learning/rfb18/
