@@ -24,21 +24,21 @@ public class AppTest
 
     }
 
-    @Test
+    @Test()
     public void testCaseChrome01()
     {
         wd = new ChromeDriver();
         wd.get("http://andestech.org/learning/rfb18/index.html");
-        wd.manage().timeouts().pageLoadTimeout(3,TimeUnit.SECONDS);
+        wd.manage().timeouts().implicitlyWait(5,TimeUnit.SECONDS);
         wd.findElement(By.linkText("New customer")).isEnabled();
     }
 
-    @Test
+    @Test(dependsOnMethods = "testCaseChrome01")
     public void testCaseChrome02()
     {
         wd = new ChromeDriver();
         wd.get("http://andestech.org/learning/rfb18/index.html");
-        wd.manage().timeouts().pageLoadTimeout(3,TimeUnit.SECONDS);
+        wd.manage().timeouts().implicitlyWait(5,TimeUnit.SECONDS);
         wd.findElement(By.linkText("New customer")).isEnabled();
         wd.findElement(By.linkText("New customer")).click();
         wd.findElement(By.name("reset")).click();
@@ -50,7 +50,7 @@ public class AppTest
         wd.switchTo().alert().accept();
     }
 
-    @Test
+    @Test(dependsOnMethods = "testCaseChrome02")
     public void testCaseChrome03()
     {
         wd = new ChromeDriver();
@@ -73,8 +73,8 @@ public class AppTest
         wd.findElement(By.name("submit")).submit();
     }
 
-    @Test
-public void testCaseChrome04()
+    @Test(dependsOnMethods = "testCaseChrome03")
+    public void testCaseChrome04()
 {
     wd = new ChromeDriver();
     wd.get("http://andestech.org/learning/rfb18/index.html");
@@ -100,7 +100,7 @@ public void testCaseChrome04()
     wd.switchTo().alert().accept();
 }
 
-    @Test
+    @Test(dependsOnMethods = "testCaseChrome01")
     public void testCaseChrome05()
     {
         wd = new ChromeDriver();
