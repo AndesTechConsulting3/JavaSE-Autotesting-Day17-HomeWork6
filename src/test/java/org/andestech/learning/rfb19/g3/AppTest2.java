@@ -17,7 +17,7 @@ public class AppTest2
     public void initData(){
 
     System.setProperty("webdriver.gecko.driver",
-            "E:\\drivers\\selenium\\geckodriver.exe");
+            "C:\\SeleniumDrivers\\FireFox\\geckodriver-v0.24.0-win64\\geckodriver.exe");
         System.out.println("+++ Class: " + this);
     }
 
