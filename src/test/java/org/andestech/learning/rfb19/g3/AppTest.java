@@ -44,7 +44,7 @@ public class AppTest
         assertEquals(wd.getCurrentUrl(), "http://andestech.org/learning/rfb18/");
     }
 
-    @Test()
+    @Test(dependsOnMethods = "testCheckUrl")
     public void registrationTest() throws InterruptedException {
 
         ChromeOptions chromeOptions = new ChromeOptions();
@@ -78,7 +78,7 @@ public class AppTest
 
     }
 
-    @Test()
+    @Test(dependsOnMethods = "registrationTest")
     public void testLogin() throws InterruptedException {
 
         ChromeOptions chromeOptions = new ChromeOptions();
@@ -106,7 +106,7 @@ public class AppTest
         assertEquals(wd.getCurrentUrl(), "http://andestech.org/learning/rfb18/home.html");
     }
 
-    @Test()
+    @Test(dependsOnMethods = "testLogin")
     public void testLogout() throws InterruptedException {
 
         ChromeOptions chromeOptions = new ChromeOptions();
@@ -134,8 +134,36 @@ public class AppTest
         assertEquals(wd.getCurrentUrl(), "http://andestech.org/learning/rfb18/home.html");
 
         WebElement element5 = wd.findElement(By.cssSelector("a:nth-child(5)"));
-        element1.click();
+        element5.click();
 
+    }
+
+    @Test(dependsOnMethods = "testCheckUrl")
+    public void testUncorrectLogin() throws InterruptedException {
+
+        ChromeOptions chromeOptions = new ChromeOptions();
+        //FirefoxOptions firefoxOptions = new FirefoxOptions();
+        chromeOptions.addArguments("--start-maximized");
+
+        wd = new ChromeDriver(chromeOptions);
+        wd.get("http://andestech.org/learning/rfb18/");
+        wd.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+//login button
+        WebElement element1 = wd.findElement(By.cssSelector("a:nth-child(3)"));
+        element1.click();
+//insert logopass
+        WebElement element2 = wd.findElement(By.name("login"));
+        element2.sendKeys("WildBanana");
+
+        WebElement element3 = wd.findElement(By.name("password"));
+        element3.sendKeys("NewPass1");
+//login button
+        //WebElement element4 = wd.findElement(By.name("submit")); -- y
+
+        WebElement element4 = wd.findElement(By.cssSelector("#lgn"));
+        element4.click();
+
+        assertEquals(wd.getCurrentUrl(), "http://andestech.org/learning/rfb18/home.html");
     }
 
 
