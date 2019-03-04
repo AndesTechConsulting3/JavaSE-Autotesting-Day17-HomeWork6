@@ -20,7 +20,7 @@ public class AppTest3
     public void initData(){
 
     System.setProperty("webdriver.ie.driver",
-            "E:\\drivers\\selenium\\IEDriverServer.exe");
+            "C:\\IEDriverServer_x64_3.14.0\\IEDriverServer.exe");
         System.out.println("+++ Class: " + this);
 
      options = new InternetExplorerOptions();
@@ -34,7 +34,7 @@ public class AppTest3
     {
 
         wd = new InternetExplorerDriver(options);
-        wd.get("http://lenta.ru");
+        wd.get("http://andestech.org/learning/rfb18");
         assertTrue( true );
     }
 
