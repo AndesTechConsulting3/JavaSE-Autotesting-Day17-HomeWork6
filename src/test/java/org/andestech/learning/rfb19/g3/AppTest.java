@@ -21,7 +21,7 @@ public class AppTest
     @BeforeClass
     public void initData(){
     System.setProperty("webdriver.chrome.driver",
-            "D:\\drivers\\chromedriver.exe");
+            "C:\\Sel\\chromedriver.exe");
     System.out.println("+++ Class: " + this);
 
     }
@@ -35,12 +35,12 @@ public class AppTest
         System.out.println("Считано с сайта: " + home.getText());
         assertTrue(true);
         Thread.sleep(1000);
-        tearDown();
+//        tearDown();
     }
 
     @Test (dependsOnMethods = "siteTest00")
     public void siteTest01() throws InterruptedException {
-        wd = new ChromeDriver();
+//        wd = new ChromeDriver();
         wd.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
         wd.get("http://andestech.org/learning/rfb18/index.html");
         WebElement newCustomer = wd.findElement(By.cssSelector("a:nth-child(2)"));
@@ -49,18 +49,18 @@ public class AppTest
         wd.findElement(By.cssSelector("input#sname")).sendKeys("Каренина");
         wd.findElement(By.cssSelector("input#login")).sendKeys("Train56");
         wd.findElement(By.cssSelector("input#pass")).sendKeys("Pass02train1");
-        wd.findElement(By.id("submit")).submit();
+        wd.findElement(By.cssSelector("#submit")).click();
+        wd.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
 
         String loginPass = wd.switchTo().alert().getText();
         Assert.assertEquals("User  Train56 created ok!",loginPass);
         wd.switchTo().alert().accept();
         Thread.sleep(3000);
-        tearDown();
     }
 
     @Test (dependsOnMethods = "siteTest01")
     public void siteTest02() throws InterruptedException {
-        wd = new ChromeDriver();
+//        wd = new ChromeDriver();
         wd.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
         wd.get("http://andestech.org/learning/rfb18/index.html");
         WebElement login = wd.findElement(By.cssSelector("a:nth-child(3)"));
